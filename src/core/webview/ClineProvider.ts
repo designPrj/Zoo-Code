@@ -353,7 +353,7 @@ export class ClineProvider
 
 	public isViewLaunched = false
 	public settingsImportedAt?: number
-	public readonly latestAnnouncementId = "oct-2026-v3.90.0-providers-tools-reasoning" // v3.90.0 providers and models, safer tool execution, reasoning and streaming
+	public readonly latestAnnouncementId = "oct-2026-v3.92.0-models-reliability-mcp" // v3.92.0 models, workflow reliability, and MCP marketplace
 	public readonly providerSettingsManager: ProviderSettingsManager
 	public readonly customModesManager: CustomModesManager
 
@@ -3649,7 +3649,7 @@ export class ClineProvider
 		let parentTask = task.parentTask
 
 		// Mark this as a user-initiated cancellation so provider-only rehydration can occur
-		task.abortReason = "user_cancelled"
+		task.setAbortReason("user_cancelled")
 
 		// Capture the current instance to detect if rehydrate already occurred elsewhere
 		const originalInstanceId = task.instanceId
@@ -3665,7 +3665,7 @@ export class ClineProvider
 		const abortPromise = task.abortTask()
 
 		// Immediately mark the original instance as abandoned to prevent any residual activity
-		task.abandoned = true
+		task.requestAbandon()
 
 		await pWaitFor(
 			() =>

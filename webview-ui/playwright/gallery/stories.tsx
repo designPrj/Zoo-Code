@@ -292,6 +292,11 @@ export const stories: Record<string, Story> = {
 		const { ModelInfoViewFixture } = await import("@/components/settings/__tests__/ModelInfoView.visual.fixture")
 		return <ModelInfoViewFixture />
 	},
+	"ollama-api-key-help": async () => {
+		const { OllamaApiKeyHelpFixture } =
+			await import("@/components/settings/providers/__tests__/Ollama.visual.fixture")
+		return <OllamaApiKeyHelpFixture />
+	},
 	"openai-codex": async () => {
 		const { OpenAICodexFixture } =
 			await import("@/components/settings/providers/__tests__/OpenAICodex.visual.fixture")
@@ -306,6 +311,11 @@ export const stories: Record<string, Story> = {
 		const { OpenAICompatibleExtraBodyFixture } =
 			await import("@/components/settings/providers/__tests__/OpenAICompatible.visual.fixture")
 		return <OpenAICompatibleExtraBodyFixture />
+	},
+	"opencode-go-temperature": async () => {
+		const { OpencodeGoTemperatureFixture } =
+			await import("@/components/settings/__tests__/OpencodeGoTemperature.visual.fixture")
+		return <OpencodeGoTemperatureFixture />
 	},
 	"rendered-content-contrast": async () => {
 		const [{ AppProviders }, { RenderedContentContrastFixture }] = await Promise.all([
